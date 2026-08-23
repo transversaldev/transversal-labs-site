@@ -3,35 +3,255 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Transversal Labs — a digital products and consulting studio based in Omaha, Nebraska." />
   <title>Transversal Labs — About</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .placeholder {
-      min-height: 100vh;
+
+    /* ── Page hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + var(--space-9));
+      padding-bottom: var(--space-9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .page-hero__tagline {
+      font-family: var(--font-body);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      margin-top: var(--space-5);
+    }
+
+    /* ── Content sections ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      margin-top: var(--space-7);
+    }
+
+    .about-block {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .about-block__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--color-accent-ghost);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: var(--nav-height);
-      text-align: center;
+      margin-bottom: var(--space-4);
     }
-    .placeholder__inner { max-width: 480px; }
-    .placeholder__label {
+
+    .about-block__title {
       font-family: var(--font-display);
-      font-size: 64px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .about-block p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--color-text-muted);
+    }
+
+    /* ── Philosophy section ── */
+    .philosophy {
+      margin-top: var(--space-9);
+    }
+
+    .philosophy__lead {
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.75;
+      color: var(--color-text-secondary);
+      max-width: 680px;
+      margin-top: var(--space-5);
+    }
+
+    .philosophy__lead strong {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    /* ── Values list ── */
+    .values {
+      margin-top: var(--space-7);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .value-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-5);
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .value-row:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .value-number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      width: 32px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .value-content { flex: 1; }
+
+    .value-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .value-body {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── Founder strip ── */
+    .founder {
+      margin-top: var(--space-9);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7) var(--space-7);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-6);
+      align-items: center;
+    }
+
+    .founder__avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-lg);
+      background: var(--color-accent-ghost);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .founder__name {
+      font-family: var(--font-display);
+      font-size: 20px;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--color-text-primary);
-      margin: var(--space-5) 0 var(--space-4);
+      margin-bottom: var(--space-1);
     }
-    .placeholder__note {
+
+    .founder__role {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
+    }
+
+    .founder__bio {
       font-size: 14px;
       color: var(--color-text-muted);
-      margin-bottom: var(--space-6);
+      line-height: 1.75;
+    }
+
+    /* ── CTA band ── */
+    .about-cta {
+      margin-top: var(--space-9);
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-8) 0;
+      text-align: center;
+    }
+
+    .about-cta h2 {
+      margin-bottom: var(--space-4);
+    }
+
+    .about-cta p {
+      max-width: 480px;
+      margin: 0 auto var(--space-6);
+      font-size: 15px;
+    }
+
+    .about-cta__actions {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .founder { grid-template-columns: 1fr; text-align: center; }
+      .founder__avatar { margin: 0 auto; }
+      .value-row { flex-direction: column; gap: var(--space-2); }
     }
   </style>
 </head>
 <body>
+
+  <!-- ── Navigation ── -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
@@ -45,7 +265,7 @@
         <li><a href="index.html" class="nav__link">Home</a></li>
         <li><a href="work.html" class="nav__link">Work</a></li>
         <li><a href="afi.html" class="nav__link">AFI App</a></li>
-        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="about.html" class="nav__link active">About</a></li>
         <li><a href="media.html" class="nav__link">Media</a></li>
         <li><a href="contact.html" class="nav__link nav__cta">Contact</a></li>
       </ul>
@@ -54,18 +274,175 @@
       </button>
     </div>
   </nav>
-  <div class="placeholder">
-    <div class="placeholder__inner">
-      <span class="eyebrow">Coming Soon</span>
-      <p class="placeholder__label">About</p>
-      <p class="placeholder__note">This page is under construction. Check back soon.</p>
-      <a href="index.html" class="btn btn--outline">← Back to Home</a>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <span class="eyebrow">About Transversal Labs</span>
+        <h1>We Build Things<br>Worth Using.</h1>
+        <p class="page-hero__tagline">Remember when apps used to be fun? We do too.</p>
+      </div>
     </div>
   </div>
+
+  <!-- ── Who We Are ── -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Who We Are</span>
+      <h2>A Studio With a Point of View</h2>
+      <div class="about-grid">
+        <div class="about-block">
+          <div class="about-block__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <p class="about-block__title">We Build Apps</p>
+          <p>We build iOS applications that people actually want to use- not because they have to — because the tool is genuinely useful, maybe even a little fun. That's the standard we hold ourselves to.</p>
+        </div>
+        <div class="about-block">
+          <div class="about-block__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <p class="about-block__title">We Consult</p>
+          <p>We work with organizations that need a steady hand on digital projects — someone who knows the territory, communicates clearly, and can help teams move with purpose. No fluff, no jargon. We want to help get the right things done.</p>
+        </div>
+        <div class="about-block">
+          <div class="about-block__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <p class="about-block__title">We're Honest</p>
+          <p>We'll tell you when we don't know something. We'll tell you when an idea probably won't work, and why. We'd rather have a real conversation than a polished one that leads nowhere useful.</p>
+        </div>
+        <div class="about-block">
+          <div class="about-block__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <p class="about-block__title">We're Based in Omaha</p>
+          <p>Transversal Labs is a Nebraska born, built from the ground up in Omaha. We work with clients and collaborators anywhere — but this is home, and we're proud of it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Philosophy ── -->
+  <section class="section philosophy">
+    <div class="container">
+      <span class="eyebrow">Our Philosophy</span>
+      <h2>Technology Serves People.<br>Not the Other Way Around.</h2>
+      <p class="philosophy__lead">
+        We've worked in and around technology long enough to know that the tool is rarely the point. 
+        <strong>The people using it are what matters most.</strong> How well a piece of software helps someone do something — or delights them in the process — that's the goal and the metric. If the tool doesn't help you do something, it's not a good one.
+      </p>
+      <p class="philosophy__lead" style="margin-top: var(--space-5);">
+        We believe that doing good work doesn't have to feel like a grind. We're seasoned professionals who take quality seriously.
+        <strong>We just don't think "serious" and "enjoyable" are mutually exclusive.</strong>
+      </p>
+
+      <div class="values">
+        <div class="value-row">
+          <span class="value-number">01</span>
+          <div class="value-content">
+            <p class="value-title">Plain Language, Always</p>
+            <p class="value-body">We value simple, accurate communication. We skip the jargon and say what we mean.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <span class="value-number">02</span>
+          <div class="value-content">
+            <p class="value-title">Curiosity Over Certainty</p>
+            <p class="value-body">We ask questions. We'd rather get to the right answer slowly than rush to a wrong one. And when we don't know something, we say so.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <span class="value-number">03</span>
+          <div class="value-content">
+            <p class="value-title">People First, Technology Second</p>
+            <p class="value-body">Every decision we make starts user. What do they need? What would actually help them? What path, what choice, what decision will postiviely affect their expereince? These are the questions that drive everything we do.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <span class="value-number">04</span>
+          <div class="value-content">
+            <p class="value-title">Work Can Be Fun</p>
+            <p class="value-body">Remember when apps used to be genuinely exciting to discover? We're trying to bring that back — in what we build, and in how we work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Founder ── -->
+  <section class="section--sm">
+    <div class="container">
+      <span class="eyebrow">The People</span>
+      <div class="founder">
+        <div class="founder__avatar">
+          <!-- Placeholder avatar — replace with photo -->
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <div class="founder__text">
+          <p class="founder__name">Jody Burke</p>
+          <p class="founder__role">Founder, CEO, Transversal Labs LLC</p>
+          <p class="founder__bio">20 plus years expereince in leading teams to build solutions in several industries. I'v been a collector of "things" since I was a kid. We started the company by building something we love and use daily. I'd love to help do the same for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <div class="about-cta">
+    <div class="container">
+      <h2>Let's Work Together</h2>
+      <p>Got a project in mind? Want to talk through an idea? We're straightforward people — reach out and we'll have an actual conversation.</p>
+      <div class="about-cta__actions">
+        <a href="contact.html" class="btn btn--primary">Get In Touch →</a>
+        <a href="work.html" class="btn btn--outline">See Our Work</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <img src="images/TL-logo-200.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <span class="footer__name">Transversal Labs</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="work.html" class="footer__link">Work</a></li>
+          <li><a href="afi.html" class="footer__link">AFI App</a></li>
+          <li><a href="about.html" class="footer__link">About</a></li>
+          <li><a href="media.html" class="footer__link">Media</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul>
+        <p class="footer__copy">© 2026 Transversal Labs LLC. All rights reserved. · Omaha, Nebraska</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
     const toggle = document.getElementById('nav-toggle');
     const links  = document.getElementById('nav-links');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
   </script>
+
 </body>
 </html>
