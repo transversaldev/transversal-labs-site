@@ -3,35 +3,249 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Get in touch with Transversal Labs — we'd love to hear from you." />
   <title>Transversal Labs — Contact</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .placeholder {
-      min-height: 100vh;
+
+    /* ── Page hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + var(--space-9));
+      padding-bottom: var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+
+    .page-hero__body {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-top: var(--space-5);
+      max-width: 520px;
+    }
+
+    /* ── Contact layout ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: var(--space-7);
+      margin-top: var(--space-7);
+      align-items: start;
+    }
+
+    /* ── Form ── */
+    .contact-form {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-7);
+    }
+
+    .contact-form__title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-5);
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 12px 16px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-accent-ghost);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--color-text-faint);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .form-select option {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: var(--space-2);
+      padding: 14px;
+      font-size: 14px;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      background: var(--color-accent-ghost);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin-top: var(--space-5);
+      text-align: center;
+    }
+
+    .form-success p {
+      font-size: 14px;
+      color: var(--color-accent);
+    }
+
+    /* ── Contact info sidebar ── */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .contact-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      transition: border-color var(--transition);
+      text-decoration: none;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(59,130,246,0.3);
+    }
+
+    .contact-card__icon {
+      width: 42px;
+      height: 42px;
+      background: var(--color-accent-ghost);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: var(--nav-height);
-      text-align: center;
+      flex-shrink: 0;
     }
-    .placeholder__inner { max-width: 480px; }
-    .placeholder__label {
-      font-family: var(--font-display);
-      font-size: 64px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+
+    .contact-card__label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--color-text-primary);
-      margin: var(--space-5) 0 var(--space-4);
-    }
-    .placeholder__note {
-      font-size: 14px;
       color: var(--color-text-muted);
-      margin-bottom: var(--space-6);
+      margin-bottom: 3px;
+    }
+
+    .contact-card__value {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text-primary);
+    }
+
+    /* Note card */
+    .contact-note {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+      margin-top: var(--space-2);
+    }
+
+    .contact-note p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ── Navigation ── -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
@@ -47,25 +261,141 @@
         <li><a href="afi.html" class="nav__link">AFI App</a></li>
         <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="media.html" class="nav__link">Media</a></li>
-        <li><a href="contact.html" class="nav__link nav__cta">Contact</a></li>
+        <li><a href="contact.html" class="nav__link active nav__cta">Contact</a></li>
       </ul>
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
-  <div class="placeholder">
-    <div class="placeholder__inner">
-      <span class="eyebrow">Coming Soon</span>
-      <p class="placeholder__label">Contact</p>
-      <p class="placeholder__note">This page is under construction. Check back soon.</p>
-      <a href="index.html" class="btn btn--outline">← Back to Home</a>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <span class="eyebrow">Get In Touch</span>
+        <h1>Let's Have a<br>Conversation.</h1>
+        <p class="page-hero__body">Tell us about your ideas or your problem. Let's talk ideas, possibilities, and what excites you or your organization. Send us a message and we'll get back to you to set up a time to go into the details and see what could be.</p>
+      </div>
     </div>
   </div>
+
+  <!-- ── Contact Section ── -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="contact-form">
+          <p class="contact-form__title">Send Us a Message</p>
+
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <!-- Netlify honeypot -->
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Your Name</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="First Last" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">What's This About?</label>
+              <select class="form-select" id="subject" name="subject">
+                <option value="" disabled selected>Pick one...</option>
+                <option value="afi-app">AFI App — feedback or questions</option>
+                <option value="consulting">Consulting — I have a project</option>
+                <option value="general">General — just saying hello</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Your Message</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Tell us what's on your mind. Plain language is fine — preferred, actually." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary form-submit">Send Message →</button>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="contact-info">
+
+          <a href="mailto:jody@transversallabs.com" class="contact-card">
+            <div class="contact-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-card__label">Email</p>
+              <p class="contact-card__value">jody@transversallabs.com</p>
+            </div>
+          </a>
+
+          <div class="contact-card" style="cursor:default;">
+            <div class="contact-card__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-card__label">Based In</p>
+              <p class="contact-card__value">Omaha, Nebraska, USA</p>
+            </div>
+          </div>
+
+          <div class="contact-note">
+            <p>We make our best effort to respond within 24 hours. We won't leave you hanging.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <img src="images/TL-logo-200.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <span class="footer__name">Transversal Labs</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="work.html" class="footer__link">Work</a></li>
+          <li><a href="afi.html" class="footer__link">AFI App</a></li>
+          <li><a href="about.html" class="footer__link">About</a></li>
+          <li><a href="media.html" class="footer__link">Media</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul>
+        <p class="footer__copy">© 2026 Transversal Labs LLC. All rights reserved. · Omaha, Nebraska</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
     const toggle = document.getElementById('nav-toggle');
     const links  = document.getElementById('nav-links');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
   </script>
+
 </body>
 </html>
