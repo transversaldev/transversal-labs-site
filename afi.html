@@ -3,35 +3,307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transversal Labs — AFI App</title>
+  <meta name="description" content="Action Figure Inventory —Track your collection, and the things you want to add to your collection, right in your pocket. Currently in Beta." />
+  <title>Transversal Labs — Action Figure Inventory App</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .placeholder {
-      min-height: 100vh;
+
+    /* ── Page hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + var(--space-9));
+      padding-bottom: var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .hero-content { max-width: 580px; }
+
+    .beta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--color-accent-ghost);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-5);
+    }
+
+    .beta-badge__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-size: clamp(16px, 2vw, 20px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      margin-top: var(--space-4);
+    }
+
+    .hero-body {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-top: var(--space-5);
+    }
+
+    /* Hero screenshot */
+    .hero-screenshot {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-screenshot img {
+      height: 420px;
+      width: auto;
+      border-radius: 24px;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    /* ── Features ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-7);
+    }
+
+    .feature {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+
+    .feature__icon {
+      width: 38px;
+      height: 38px;
+      background: var(--color-accent-ghost);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: var(--nav-height);
-      text-align: center;
+      margin-bottom: var(--space-4);
     }
-    .placeholder__inner { max-width: 480px; }
-    .placeholder__label {
+
+    .feature__title {
       font-family: var(--font-display);
-      font-size: 64px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--color-text-primary);
-      margin: var(--space-5) 0 var(--space-4);
+      margin-bottom: var(--space-2);
     }
-    .placeholder__note {
-      font-size: 14px;
+
+    .feature__body {
+      font-size: 13px;
       color: var(--color-text-muted);
-      margin-bottom: var(--space-6);
+      line-height: 1.7;
+    }
+
+    /* ── Screenshots ── */
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-7);
+    }
+
+    .screenshot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .screenshot img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .screenshot__label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    /* ── Beta CTA ── */
+    .beta-section {
+      margin-top: var(--space-9);
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-9) 0;
+    }
+
+    .beta-inner {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .beta-content__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-3);
+    }
+
+    .beta-content__body {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+    }
+
+    /* Beta form */
+    .beta-form {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .beta-form__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-5);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-4);
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 12px 16px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-accent-ghost);
+    }
+
+    .form-input::placeholder { color: var(--color-text-faint); }
+
+    .form-submit {
+      width: 100%;
+      margin-top: var(--space-2);
+      padding: 14px;
+      font-size: 14px;
+    }
+
+    .beta-note {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-top: var(--space-3);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-screenshot { display: none; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .screenshots { grid-template-columns: repeat(2, 1fr); }
+      .beta-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .features { grid-template-columns: 1fr; }
+      .screenshots { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
+
+  <!-- ── Navigation ── -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
@@ -44,7 +316,7 @@
       <ul class="nav__links" id="nav-links">
         <li><a href="index.html" class="nav__link">Home</a></li>
         <li><a href="work.html" class="nav__link">Work</a></li>
-        <li><a href="afi.html" class="nav__link">AFI App</a></li>
+        <li><a href="afi.html" class="nav__link active">AFI App</a></li>
         <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="media.html" class="nav__link">Media</a></li>
         <li><a href="contact.html" class="nav__link nav__cta">Contact</a></li>
@@ -54,18 +326,196 @@
       </button>
     </div>
   </nav>
-  <div class="placeholder">
-    <div class="placeholder__inner">
-      <span class="eyebrow">Coming Soon</span>
-      <p class="placeholder__label">AFI App</p>
-      <p class="placeholder__note">This page is under construction. Check back soon.</p>
-      <a href="index.html" class="btn btn--outline">← Back to Home</a>
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div class="hero-content">
+          <div class="beta-badge">
+            <span class="beta-badge__dot"></span>
+            Now in Beta
+          </div>
+          <span class="eyebrow">iOS Application</span>
+          <h1>Action Figure<br>Inventory</h1>
+          <p class="hero-tagline">Like a whole 'nother collector in your pocket.</p>
+          <p class="hero-body">Action Figure Inventory is designed for optimal flexibility. Input as little or as much data on your toys as you like — all fields can be toggled on or off. Track the figures you're after in the Wishlist, document everything you have on pre-order, create CSV backups, bulk import entries, and much more.</p>
+          <a href="#beta" class="btn btn--primary" style="margin-top: var(--space-6);">Join the Beta →</a>
+        </div>
+        <div class="hero-screenshot">
+          <img src="images/IMG_7474.PNG" alt="Action Figure Inventory App — figure detail screen" />
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- ── Features ── -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">What It Does</span>
+      <h2>Built for How<br>Collectors Actually Collect.</h2>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </div>
+          <p class="feature__title">Flexible Entry</p>
+          <p class="feature__body">Fill in as much information as you want. Every field is optional — so you can log a quick add or go deep with full details. Connect to eBay to see what the current selling prices for your figures are, right from the entry form.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <p class="feature__title">Wishlist</p>
+          <p class="feature__body">Track the figures you're after. Organize by toy line, manufacturer, or keep them ungrouped — however your brain works.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+          </div>
+          <p class="feature__title">On Order</p>
+          <p class="feature__body">Document pre-orders from Hasbro Pulse, Big Bad Toy Store, or any retailer. See what's coming and what you've got tied up. Sumarizes your upcoming spend by month.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="8 17 12 21 16 17"/>
+              <line x1="12" y1="12" x2="12" y2="21"/>
+              <path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"/>
+            </svg>
+          </div>
+          <p class="feature__title">CSV Export</p>
+          <p class="feature__body">Back up your collection details to a CSV file and save it to your computer. Your data stays yours.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+              <path d="M9 18H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>
+            </svg>
+          </div>
+          <p class="feature__title">Bulk Import</p>
+          <p class="feature__body">Have a big collection? Import entries from a CSV instead of entering individually.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <p class="feature__title">Built for iOS</p>
+          <p class="feature__body">Designed for iPhone. Performance and functionality to match design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Screenshots ── -->
+  <section class="section--sm">
+    <div class="container">
+      <span class="eyebrow">See It in Action</span>
+      <h2>A Look Inside.</h2>
+      <div class="screenshots">
+        <div class="screenshot">
+          <img src="images/add_toy.PNG" alt="Add Toy screen" />
+          <span class="screenshot__label">Add a Figure</span>
+        </div>
+        <div class="screenshot">
+          <img src="images/wishlist.PNG" alt="Wishlist screen" />
+          <span class="screenshot__label">Wishlist</span>
+        </div>
+        <div class="screenshot">
+          <img src="images/on_order.PNG" alt="On Order screen" />
+          <span class="screenshot__label">On Order</span>
+        </div>
+        <div class="screenshot">
+          <img src="images/impt_expt.PNG" alt="Export and Import screen" />
+          <span class="screenshot__label">Export &amp; Import</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Beta CTA ── -->
+  <div class="beta-section" id="beta">
+    <div class="container">
+      <div class="beta-inner">
+        <div class="beta-content">
+          <div class="beta-badge" style="margin-bottom: var(--space-4);">
+            <span class="beta-badge__dot"></span>
+            Beta Program
+          </div>
+          <h2 class="beta-content__title">Want to Be<br>a Beta Tester?</h2>
+          <p class="beta-content__body">Action Figure Inventory is currently in Beta and we're looking for collectors to put it through its paces. If you'd like to try it out and help shape it's launch and future, we'd love to have you. Drop your name and email and we'll be in touch with access details.</p>
+          <p class="beta-content__body" style="margin-top: var(--space-4);">We won't keep your details or information. All you need is an Apple Account to participate (Also known previously as your Apple ID). Free to use, no commitment. We're looking for new ideas and what features we can add that will make this your go to collectibles app.</p>
+        </div>
+
+        <div class="beta-form">
+          <p class="beta-form__title">Join the Beta</p>
+          <form
+            name="beta-signup"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="beta-signup" />
+            <p style="display:none;">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            <div class="form-group">
+              <label class="form-label" for="beta-name">Your Name</label>
+              <input class="form-input" type="text" id="beta-name" name="name" placeholder="First Last" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="beta-email">Email Address</label>
+              <input class="form-input" type="email" id="beta-email" name="email" placeholder="you@example.com" required />
+            </div>
+            <button type="submit" class="btn btn--primary form-submit">Request Beta Access →</button>
+            <p class="beta-note">We'll follow up with TestFlight access details.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <img src="images/TL-logo-200.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <span class="footer__name">Transversal Labs</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="work.html" class="footer__link">Work</a></li>
+          <li><a href="afi.html" class="footer__link">AFI App</a></li>
+          <li><a href="about.html" class="footer__link">About</a></li>
+          <li><a href="media.html" class="footer__link">Media</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul>
+        <p class="footer__copy">© 2026 Transversal Labs LLC. All rights reserved. · Omaha, Nebraska</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
     const toggle = document.getElementById('nav-toggle');
     const links  = document.getElementById('nav-links');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
   </script>
+
 </body>
 </html>
