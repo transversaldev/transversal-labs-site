@@ -3,35 +3,309 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Our work — mobile apps and digital consulting from Transversal Labs." />
   <title>Transversal Labs — Work</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .placeholder {
-      min-height: 100vh;
+
+    /* ── Page hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + var(--space-9));
+      padding-bottom: var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .page-hero__body {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-top: var(--space-5);
+      max-width: 560px;
+    }
+
+    /* ── Lane divider ── */
+    .lane-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      margin: var(--space-9) 0 var(--space-7);
+    }
+
+    .lane-divider__line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .lane-divider__label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── App card — featured ── */
+    .app-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      transition: border-color var(--transition);
+    }
+
+    .app-card:hover {
+      border-color: rgba(59,130,246,0.3);
+    }
+
+    .app-card__content {
+      padding: var(--space-8) var(--space-7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .app-card__tags {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+
+    .app-card__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+
+    .app-card__body {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: var(--space-6);
+      max-width: 480px;
+    }
+
+    .app-card__actions {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* App visual panel */
+    .app-card__visual {
+      background: linear-gradient(145deg, #111827 0%, #0B0D11 100%);
+      border-left: 1px solid var(--color-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: var(--nav-height);
-      text-align: center;
+      padding: var(--space-7);
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
     }
-    .placeholder__inner { max-width: 480px; }
-    .placeholder__label {
+
+    .app-card__visual::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+    }
+
+    /* Phone mockup */
+    .phone-mock {
+      width: 150px;
+      height: 265px;
+      background: #1A1E28;
+      border-radius: 22px;
+      border: 2px solid var(--color-border-light);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+      z-index: 1;
+    }
+
+    .phone-mock__notch {
+      width: 52px;
+      height: 5px;
+      background: var(--color-border-light);
+      border-radius: 3px;
+      margin: 10px auto 0;
+    }
+
+    .phone-mock__screen {
+      flex: 1;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .phone-mock__bar {
+      height: 7px;
+      background: var(--color-border-light);
+      border-radius: 4px;
+    }
+
+    .phone-mock__bar--accent { background: rgba(59,130,246,0.5); width: 75%; }
+    .phone-mock__bar--short  { width: 50%; }
+
+    .phone-mock__card {
+      background: var(--color-border);
+      border-radius: 7px;
+      height: 44px;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 7px;
+    }
+
+    .phone-mock__dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: var(--color-accent-ghost);
+      flex-shrink: 0;
+    }
+
+    .phone-mock__lines {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .phone-mock__line {
+      height: 4px;
+      background: var(--color-border-light);
+      border-radius: 3px;
+    }
+
+    .phone-mock__line--short { width: 55%; }
+
+    /* ── Coming soon strip ── */
+    .coming-soon {
+      margin-top: var(--space-5);
+      background: var(--color-bg-card);
+      border: 1px dashed var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-7);
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+    }
+
+    .coming-soon__icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-accent-ghost);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .coming-soon__title {
       font-family: var(--font-display);
-      font-size: 64px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--color-text-primary);
-      margin: var(--space-5) 0 var(--space-4);
+      margin-bottom: var(--space-1);
     }
-    .placeholder__note {
-      font-size: 14px;
+
+    .coming-soon__body {
+      font-size: 13px;
       color: var(--color-text-muted);
-      margin-bottom: var(--space-6);
+      line-height: 1.6;
+    }
+
+    /* ── Consulting block ── */
+    .consulting-block {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-7);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-6);
+      align-items: center;
+    }
+
+    .consulting-block__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .consulting-block__body {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    @media (max-width: 860px) {
+      .app-card { grid-template-columns: 1fr; }
+      .app-card__visual { min-height: 200px; border-left: none; border-top: 1px solid var(--color-border); }
+      .consulting-block { grid-template-columns: 1fr; }
+      .coming-soon { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ── Navigation ── -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
@@ -43,7 +317,7 @@
       </a>
       <ul class="nav__links" id="nav-links">
         <li><a href="index.html" class="nav__link">Home</a></li>
-        <li><a href="work.html" class="nav__link">Work</a></li>
+        <li><a href="work.html" class="nav__link active">Work</a></li>
         <li><a href="afi.html" class="nav__link">AFI App</a></li>
         <li><a href="about.html" class="nav__link">About</a></li>
         <li><a href="media.html" class="nav__link">Media</a></li>
@@ -54,18 +328,151 @@
       </button>
     </div>
   </nav>
-  <div class="placeholder">
-    <div class="placeholder__inner">
-      <span class="eyebrow">Coming Soon</span>
-      <p class="placeholder__label">Work</p>
-      <p class="placeholder__note">This page is under construction. Check back soon.</p>
-      <a href="index.html" class="btn btn--outline">← Back to Home</a>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <span class="eyebrow">What We Build</span>
+        <h1>Two Lanes.<br>One Standard.</h1>
+        <p class="page-hero__body">We build mobile apps and we help organizations with digital projects. The work looks different depending on which lane we're in — but the bar doesn't move.</p>
+      </div>
     </div>
   </div>
+
+  <!-- ── Apps Lane ── -->
+  <section class="section">
+    <div class="container">
+
+      <div class="lane-divider">
+        <div class="lane-divider__line"></div>
+        <span class="lane-divider__label">Lane 01 — Mobile Applications</span>
+        <div class="lane-divider__line"></div>
+      </div>
+
+      <span class="eyebrow">Apps</span>
+      <h2>Built to Be Used.<br>Designed to Be Enjoyed.</h2>
+      <p style="max-width:560px; margin-top: var(--space-4); font-size:15px; color: var(--color-text-muted); line-height:1.75;">We build iOS apps that earn their place on someone's phone. They have to perform and feel good to use. Both things matter.</p>
+
+      <!-- AFI App Feature Card -->
+      <div class="app-card" style="margin-top: var(--space-7);">
+        <div class="app-card__content">
+          <div class="app-card__tags">
+            <span class="tag tag--accent">iOS App</span>
+            <span class="tag">in Beta Test- Looking for testers!</span>
+            <span class="tag">Collectibles</span>
+          </div>
+          <h2 class="app-card__title">Action Figure<br>Inventory App</h2>
+          <p class="app-card__body">Built for collectors BY collectors. Catalog your action figures, check eBay prices, anf financial summaries. Simple to use, genuinely useful, a LOT of fun.</p>
+          <div class="app-card__actions">
+            <a href="afi.html" class="btn btn--primary">Learn More →</a>
+            <a href="#" class="btn btn--outline">App Store ↗</a>
+          </div>
+        </div>
+        <div class="app-card__visual">
+          <div class="phone-mock">
+            <div class="phone-mock__notch"></div>
+            <div class="phone-mock__screen">
+              <div class="phone-mock__bar phone-mock__bar--accent"></div>
+              <div class="phone-mock__bar phone-mock__bar--short"></div>
+              <div class="phone-mock__card">
+                <div class="phone-mock__dot"></div>
+                <div class="phone-mock__lines">
+                  <div class="phone-mock__line"></div>
+                  <div class="phone-mock__line phone-mock__line--short"></div>
+                </div>
+              </div>
+              <div class="phone-mock__card">
+                <div class="phone-mock__dot"></div>
+                <div class="phone-mock__lines">
+                  <div class="phone-mock__line"></div>
+                  <div class="phone-mock__line phone-mock__line--short"></div>
+                </div>
+              </div>
+              <div class="phone-mock__card">
+                <div class="phone-mock__dot"></div>
+                <div class="phone-mock__lines">
+                  <div class="phone-mock__line"></div>
+                  <div class="phone-mock__line phone-mock__line--short"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More coming -->
+      <div class="coming-soon">
+        <div class="coming-soon__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div>
+          <p class="coming-soon__title">More Apps in the Works</p>
+          <p class="coming-soon__body">We're always thinking about what to build next. Got an idea or a problem worth solving? We'd love to hear it.</p>
+        </div>
+        <a href="contact.html" class="btn btn--ghost" style="flex-shrink:0;">Say Hello →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Consulting Lane ── -->
+  <section class="section">
+    <div class="container">
+
+      <div class="lane-divider">
+        <div class="lane-divider__line"></div>
+        <span class="lane-divider__label">Lane 02 — Digital Consulting</span>
+        <div class="lane-divider__line"></div>
+      </div>
+
+      <div class="consulting-block">
+        <div>
+          <span class="eyebrow">Consulting</span>
+          <h2 class="consulting-block__title">We Help Teams<br>Build the Right Things.</h2>
+          <p class="consulting-block__body">We have expereince across a wide range of disciplines. If you've got a digital project that needs experienced hands, clear communication, and someone who'll tell you the truth, let's talk.</p>
+          <a href="contact.html" class="btn btn--outline" style="margin-top: var(--space-6);">Start a Conversation →</a>
+        </div>
+        <div style="flex-shrink:0;">
+          <div style="width:80px; height:80px; background: var(--color-accent-ghost); border-radius: var(--radius-lg); border: 1px solid rgba(59,130,246,0.2); display:flex; align-items:center; justify-content:center;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <img src="images/TL-logo-200.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <span class="footer__name">Transversal Labs</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="work.html" class="footer__link">Work</a></li>
+          <li><a href="afi.html" class="footer__link">AFI App</a></li>
+          <li><a href="about.html" class="footer__link">About</a></li>
+          <li><a href="media.html" class="footer__link">Media</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul>
+        <p class="footer__copy">© 2026 Transversal Labs LLC. All rights reserved. · Omaha, Nebraska</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
     const toggle = document.getElementById('nav-toggle');
     const links  = document.getElementById('nav-links');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
   </script>
+
 </body>
 </html>
