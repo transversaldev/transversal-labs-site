@@ -1,0 +1,15 @@
+# Action Figure Inventory — Collection Import Template
+# Template Version: 1.0
+# App: actionfigureinventory.app
+# To import: open the app → Settings → Export & Import → Import Collection
+# Type values: TOY, WISHLIST, ONORDER
+# Blank fields = not set (optional data)
+# Do not edit the header row
+# IMPORTANT: Format the UPC column as TEXT in Excel before entering barcodes.
+#            If UPC is not set to Text, Excel will convert barcodes to
+#            scientific notation (e.g. 8.12345E+11) and the value will
+#            be stored incorrectly in your collection.
+# -----------------------------------------------
+Type,Collection,Group,Name,CharacterName,Manufacturer,ToyLine,Series,FigureNumber,YearOfRelease,ItemType,Scale,Quantity,Condition,Exclusive,UPC,ASIN,PurchasePrice,EstimatedValue,Graded,Signed,Recipe,Price,Source,ProductURL,OrderDate,ExpectedDate,Notes,DateAdded
+TOY,Star Wars,,Luke Skywalker,Luke Skywalker,Hasbro,The Black Series,Archive,F1234,2022,Figure,"1/12 - 6""",1,Mint,,5010993843602,,22.99,25.00,No,No,,,Retail,,,,Sample row — delete before importing,2026-08-27
+
