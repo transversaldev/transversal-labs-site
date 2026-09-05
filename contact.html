@@ -249,7 +249,7 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
-        <img src="images/TL-logo-200.png" alt="Transversal Labs" class="nav__logo-img" />
+        <img src="images/TL-logo-transparent.png" alt="Transversal Labs" class="nav__logo-img" />
         <div class="nav__logo-text">
           <span class="nav__logo-name">Transversal Labs</span>
           <span class="nav__logo-sub">Digital Products &amp; Consulting</span>
@@ -285,52 +285,29 @@
     <div class="container">
       <div class="contact-grid">
 
-        <!-- Form -->
-        <div class="contact-form">
-          <p class="contact-form__title">Send Us a Message</p>
+          <!-- Contact -->
+          <div class="contact-form">
+            <p class="contact-form__title">Send Us a Message</p>
 
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-          >
-            <!-- Netlify honeypot -->
-            <input type="hidden" name="form-name" value="contact" />
-            <p style="display:none;">
-              <label>Don't fill this out: <input name="bot-field" /></label>
+            <p style="font-family: var(--font-body); font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: var(--space-6);">
+              The best way to reach us is by email. Click below and your email client will open with our address ready to go. Let us know how we can help you. 
             </p>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="name">Your Name</label>
-                <input class="form-input" type="text" id="name" name="name" placeholder="First Last" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">Email Address</label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required />
-              </div>
-            </div>
-
             <div class="form-group">
-              <label class="form-label" for="subject">What's This About?</label>
-              <select class="form-select" id="subject" name="subject">
-                <option value="" disabled selected>Pick one...</option>
-                <option value="afi-app">AFI App — feedback or questions</option>
-                <option value="consulting">Consulting — I have a project</option>
-                <option value="general">General — just saying hello</option>
-                <option value="other">Something else</option>
-              </select>
+              <p class="form-label">What's This About?</p>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <a href="mailto:jody@transversallabs.com?subject=AFI App — feedback or questions" class="btn btn--primary form-submit" style="text-align: center; text-decoration: none;">
+                  AFI App — Feedback or Questions →
+                </a>
+                <a href="mailto:jody@transversallabs.com?subject=Consulting — I have a project" class="btn btn--primary form-submit" style="text-align: center; text-decoration: none;">
+                  Consulting — I Have a Project →
+                </a>
+                <a href="mailto:jody@transversallabs.com?subject=General — just saying hello" class="btn btn--primary form-submit" style="text-align: center; text-decoration: none;">
+                  General — Just Saying Hello →
+                </a>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label class="form-label" for="message">Your Message</label>
-              <textarea class="form-textarea" id="message" name="message" placeholder="Tell us what's on your mind. Plain language is fine — preferred, actually." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn--primary form-submit">Send Message →</button>
-          </form>
-        </div>
+          </div>
 
         <!-- Sidebar -->
         <div class="contact-info">
@@ -376,7 +353,7 @@
     <div class="container">
       <div class="footer__inner">
         <div class="footer__logo">
-          <img src="images/TL-logo-200.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <img src="images/TL-logo-transparent.png" alt="Transversal Labs" style="width:28px; height:28px;" />
           <span class="footer__name">Transversal Labs</span>
         </div>
         <ul class="footer__links">

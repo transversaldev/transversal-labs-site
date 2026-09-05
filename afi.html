@@ -307,7 +307,7 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
-        <img src="images/TL-logo-200.png" alt="Transversal Labs" class="nav__logo-img" />
+        <img src="images/TL-logo-transparent.png" alt="Transversal Labs" class="nav__logo-img" />
         <div class="nav__logo-text">
           <span class="nav__logo-name">Transversal Labs</span>
           <span class="nav__logo-sub">Digital Products &amp; Consulting</span>
@@ -540,27 +540,17 @@
 
         <div class="beta-form">
           <p class="beta-form__title">Join the Beta</p>
-          <form
-            name="beta-signup"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
+          <p style="font-family: var(--font-body); font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: var(--space-5);">
+            Ready to try it out? Drop us an email and we'll get you set up with TestFlight access.
+          </p>
+          
+            <a href="mailto:jody@transversallabs.com?subject=Beta Access Request — Action Figure Inventory"
+            class="btn btn--primary form-submit"
+            style="display: block; text-align: center; text-decoration: none;"
           >
-            <input type="hidden" name="form-name" value="beta-signup" />
-            <p style="display:none;">
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
-            <div class="form-group">
-              <label class="form-label" for="beta-name">Your Name</label>
-              <input class="form-input" type="text" id="beta-name" name="name" placeholder="First Last" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="beta-email">Email Address</label>
-              <input class="form-input" type="email" id="beta-email" name="email" placeholder="you@example.com" required />
-            </div>
-            <button type="submit" class="btn btn--primary form-submit">Request Beta Access →</button>
-            <p class="beta-note">We'll follow up with TestFlight access details.</p>
-          </form>
+            Request Beta Access →
+          </a>
+          <p class="beta-note">We'll follow up with TestFlight access details.</p>
         </div>
 
       </div>
@@ -572,7 +562,7 @@
     <div class="container">
       <div class="footer__inner">
         <div class="footer__logo">
-          <img src="images/TL-logo-200.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <img src="images/TL-logo-transparent.png" alt="Transversal Labs" style="width:28px; height:28px;" />
           <span class="footer__name">Transversal Labs</span>
         </div>
         <ul class="footer__links">
