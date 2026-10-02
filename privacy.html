@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Privacy Policy for Action Figure Inventory (AFI) and Transversal Labs LLC — what data the app handles, how it's handled, and your choices." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://transversallabs.com/privacy.html" />
+  <title>Transversal Labs — Privacy Policy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    /* ── Page hero (cloned from about.html for visual consistency) ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + var(--space-9));
+      padding-bottom: var(--space-9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .page-hero__tagline {
+      font-family: var(--font-body);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+      margin-top: var(--space-5);
+    }
+
+    /* ── Policy body ──
+       Simple, readable long-form layout. Max-width keeps line length
+       comfortable for reading legal/policy text (~70 chars per line).
+       We lean on existing CSS variables so dark/light mode just works. */
+
+    .policy-meta {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: var(--space-6);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .policy-meta span strong {
+      color: var(--color-text-secondary);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .policy-body {
+      max-width: 760px;
+      /* No margin-top needed — the parent .section already provides top
+         padding from styles.css. Adding margin here previously stacked
+         three gaps (hero padding-bottom + section padding-top + this),
+         creating excessive dead space before the opening paragraph. */
+    }
+
+    .policy-body > p,
+    .policy-body > ul {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-5);
+    }
+
+    .policy-body ul {
+      padding-left: var(--space-6);
+    }
+
+    .policy-body ul li {
+      margin-bottom: var(--space-2);
+    }
+
+    .policy-body a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .policy-body a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .policy-section {
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .policy-section__number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+
+    .policy-section h2 {
+      font-size: clamp(22px, 2.5vw, 28px);
+      margin-bottom: var(--space-5);
+    }
+
+    .policy-section h3 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin-top: var(--space-5);
+      margin-bottom: var(--space-3);
+    }
+
+    .policy-callout {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-accent);
+      border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-6);
+      margin: var(--space-5) 0;
+    }
+
+    .policy-callout p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .policy-callout p:last-child { margin-bottom: 0; }
+
+    .policy-contact {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-top: var(--space-5);
+    }
+
+    .policy-contact p {
+      margin-bottom: var(--space-2);
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+    }
+
+    .policy-footnote {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--color-text-muted);
+      margin-top: var(--space-7);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-border);
+    }
+
+    @media (max-width: 768px) {
+      .policy-meta { gap: var(--space-2); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──
+       Mirrors about.html exactly. Privacy intentionally does NOT get a
+       top-nav link — standard convention is footer-only. Keeping it out
+       of the nav avoids clutter and matches user expectations. -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="images/TL-logo-transparent.png" alt="Transversal Labs" class="nav__logo-img" />
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Transversal Labs</span>
+          <span class="nav__logo-sub">Digital Products &amp; Consulting</span>
+        </div>
+      </a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="work.html" class="nav__link">Work</a></li>
+        <li><a href="afi.html" class="nav__link">AFI App</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="media.html" class="nav__link">Media</a></li>
+        <li><a href="contact.html" class="nav__link nav__cta">Contact</a></li>
+      </ul>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Page Hero ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <span class="eyebrow">Legal</span>
+        <h1>Privacy Policy</h1>
+        <p class="page-hero__tagline">
+          Written in plain language. If anything isn't clear, email us and we'll fix it.
+        </p>
+        <!-- Rationale: tagline reinforces the "plain language" value from
+             about.html value #01 — ties the legal page back to brand voice
+             instead of reading like boilerplate. -->
+        <div class="policy-meta">
+          <span><strong>Effective:</strong>[EFFECTIVE DATE]</span>
+          <span><strong>Last Updated:</strong>[LAST UPDATED DATE]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Policy Body ── -->
+  <section class="section">
+    <div class="container">
+      <div class="policy-body">
+
+        <p>
+          Action Figure Inventory ("AFI," "the app," "we," "us") is developed and operated by
+          Transversal Labs LLC, based in Omaha, Nebraska. This Privacy Policy explains what
+          information the app handles, how it's handled, and the choices you have.
+        </p>
+        <p>
+          We built AFI to be simple and private by default.
+          <strong>We do not collect personal information about you, we do not require an
+          account, and we do not run analytics.</strong>
+        </p>
+
+        <!-- ── Section 1 ── -->
+        <div class="policy-section">
+          <span class="policy-section__number">01</span>
+          <h2>Information We Do Not Collect</h2>
+          <p>AFI does not collect, and Transversal Labs does not receive:</p>
+          <ul>
+            <li>Your name, email address, phone number, or any account credentials</li>
+            <li>Advertising identifiers or device fingerprints</li>
+            <li>Analytics data about how you use the app</li>
+            <li>Location data</li>
+            <li>Contacts, photos outside of the app, or other data from your device</li>
+          </ul>
+          <p>AFI does not require you to create an account or sign in.</p>
+        </div>
+
+        <!-- ── Section 2 ──
+             Rationale: Accurately reflects SwiftData with CloudKit set to
+             .automatic (user's own private database) and the PhotoManager
+             iCloud Drive / local Documents fallback. Framed as "your Apple
+             account" so the user understands this is their data, not ours. -->
+        <div class="policy-section">
+          <span class="policy-section__number">02</span>
+          <h2>Information Stored On Your Device and in Your iCloud</h2>
+          <p>
+            AFI stores the collection data you create — action figures, wishlist items,
+            on-order items, and their details — locally on your device using Apple's
+            SwiftData framework.
+          </p>
+          <p>
+            If you have iCloud enabled on your device, this collection data automatically
+            syncs to <strong>your own private iCloud database</strong> using Apple's
+            CloudKit service. This sync is between your Apple devices only.
+            <strong>Transversal Labs has no access to your private iCloud data.</strong>
+            We cannot see, retrieve, or modify anything stored there.
+          </p>
+          <p>
+            Photos you attach to figures or wishlist items are saved to your app's iCloud
+            Drive container when iCloud Drive is available on your device, or to your
+            device's local storage when it isn't. Photos stored in iCloud Drive remain
+            within your own Apple account.
+          </p>
+        </div>
+
+        <!-- ── Section 3 ──
+             Rationale: Matches Option A agreed to in planning — accurately
+             discloses the ~3-day Cloudflare Workers Logs retention window
+             while being clear nothing is tied to a user identifier. -->
+        <div class="policy-section">
+          <span class="policy-section__number">03</span>
+          <h2>eBay Price Lookups</h2>
+          <p>
+            When you tap to look up eBay prices for a figure, AFI sends a search query —
+            either the figure's UPC barcode or a keyword based on the figure's title — to
+            a secure proxy service operated by Transversal Labs and hosted on Cloudflare.
+            The proxy forwards the query to the eBay Browse API and returns active listing
+            results (titles, prices, condition, and listing images) to the app.
+          </p>
+
+          <div class="policy-callout">
+            <p><strong>What is sent:</strong> the search query itself (a UPC number or keyword text).</p>
+            <p><strong>What is not sent:</strong> your name, your device identifier, your collection contents, or any account information. The proxy has no way to link a query to an individual user.</p>
+          </div>
+
+          <h3>Logging</h3>
+          <p>
+            Our infrastructure provider (Cloudflare) automatically retains basic request
+            metadata — including the search query in the request URL, timestamp, and
+            response status — for approximately <strong>3 days</strong> for operational
+            and debugging purposes, after which it is automatically deleted. This metadata
+            is not linked to any user identifier and is not shared with third parties.
+          </p>
+          <p>
+            eBay's use of the query on their side is governed by
+            <a href="https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260" target="_blank" rel="noopener noreferrer">eBay's own Privacy Policy</a>.
+          </p>
+        </div>
+
+        <!-- ── Section 4 ──
+             Rationale: Apple-native crash reporting only (zero third-party
+             SDKs confirmed from Xcode Package Dependencies). Names the exact
+             iOS Settings path so a privacy-conscious user can toggle it. -->
+        <div class="policy-section">
+          <span class="policy-section__number">04</span>
+          <h2>Crash Reports</h2>
+          <p>
+            If you have chosen to share diagnostics with app developers in your iOS
+            Settings (<strong>Settings → Privacy &amp; Security → Analytics &amp;
+            Improvements → Share With App Developers</strong>), Apple may provide
+            Transversal Labs with anonymized crash reports through Apple's built-in App
+            Analytics system. These reports help us identify and fix bugs. They do not
+            include personal information or your collection data. This sharing is
+            controlled entirely by you through iOS Settings and can be turned off at any
+            time.
+          </p>
+          <p>
+            AFI does not use any third-party crash reporting or analytics services.
+          </p>
+        </div>
+
+        <!-- ── Section 5 ── -->
+        <div class="policy-section">
+          <span class="policy-section__number">05</span>
+          <h2>Children's Privacy</h2>
+          <p>
+            AFI is not directed to children under 13 and does not knowingly collect
+            information from children under 13. Because we do not collect personal
+            information from any user, we do not collect it from children.
+          </p>
+        </div>
+
+        <!-- ── Section 6 ──
+             Rationale: Written conservatively around the PhotoManager
+             deletion caveat flagged in planning. Does NOT claim "deleting
+             a figure deletes its photos." Tighten this section after the
+             PhotoManager review in Tier 1 cleanup. -->
+        <div class="policy-section">
+          <span class="policy-section__number">06</span>
+          <h2>Data Deletion</h2>
+          <p>Because AFI stores your data on your device and in your own iCloud account:</p>
+          <ul>
+            <li><strong>To delete a figure, collection, wishlist item, or on-order item:</strong> use the delete controls within the app.</li>
+            <li><strong>To delete all app data:</strong> delete the AFI app from your device. On-device data will be removed. Data synced to your iCloud account can be removed by turning off iCloud sync for AFI in <strong>Settings → [Your Name] → iCloud → Apps Using iCloud</strong>, or by managing your iCloud storage.</li>
+            <li><strong>Photos:</strong> photos attached to your figures are stored in your iCloud Drive or local device storage. Deleting the app or removing photos through the iOS Files app or iCloud Drive removes them from your Apple account. Some residual photo files may remain in app storage until the app is uninstalled or the storage is cleared.</li>
+          </ul>
+          <p>
+            Because Transversal Labs does not store your collection data on our own
+            servers, we cannot delete it on your behalf. Your data is in your control.
+          </p>
+        </div>
+
+        <!-- ── Section 7 ── -->
+        <div class="policy-section">
+          <span class="policy-section__number">07</span>
+          <h2>Third-Party Services</h2>
+          <p>AFI interacts with the following third-party services:</p>
+          <ul>
+            <li>
+              <strong>Apple iCloud (CloudKit and iCloud Drive)</strong> — for syncing your
+              collection data and photos within your own Apple account. Governed by
+              <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>.
+            </li>
+            <li>
+              <strong>Cloudflare Workers</strong> — hosts our proxy service for eBay
+              lookups. Governed by
+              <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's Privacy Policy</a>.
+            </li>
+            <li>
+              <strong>eBay Browse API</strong> — provides active listing results when you
+              request an eBay price lookup. Governed by
+              <a href="https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260" target="_blank" rel="noopener noreferrer">eBay's Privacy Policy</a>.
+            </li>
+          </ul>
+          <p>
+            We do not sell, rent, or share any information with advertisers or data brokers.
+          </p>
+        </div>
+
+        <!-- ── Section 8 ── -->
+        <div class="policy-section">
+          <span class="policy-section__number">08</span>
+          <h2>Changes to This Policy</h2>
+          <p>
+            If we make material changes to this Privacy Policy, we will update the "Last
+            Updated" date at the top of this page. If changes are significant, we will
+            note them within the app or on our website.
+          </p>
+        </div>
+
+        <!-- ── Section 9 ──
+             Rationale: Capital S in Support@ per JDB's correction.
+             Contact block styled as a card for scanability. -->
+        <div class="policy-section">
+          <span class="policy-section__number">09</span>
+          <h2>Contact</h2>
+          <p>
+            Questions about this Privacy Policy or how AFI handles data:
+          </p>
+          <div class="policy-contact">
+            <p><strong>Transversal Labs LLC</strong></p>
+            <p>Email: <a href="mailto:Support@transversallabs.com">Support@transversallabs.com</a></p>
+            <p>Website: <a href="index.html">transversallabs.com</a></p>
+          </div>
+        </div>
+
+        <p class="policy-footnote">
+          Transversal Labs LLC is a Nebraska limited liability company.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──
+       Added a Privacy link to the existing footer link list. You'll want
+       to add this same <li> to every other page's footer (index, work, afi,
+       about, media, contact) in a follow-up pass. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <img src="images/TL-logo-transparent.png" alt="Transversal Labs" style="width:28px; height:28px;" />
+          <span class="footer__name">Transversal Labs</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="work.html" class="footer__link">Work</a></li>
+          <li><a href="afi.html" class="footer__link">AFI App</a></li>
+          <li><a href="about.html" class="footer__link">About</a></li>
+          <li><a href="media.html" class="footer__link">Media</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+          <li><a href="privacy.html" class="footer__link">Privacy</a></li>
+        </ul>
+        <p class="footer__copy">© 2026 Transversal Labs LLC. All rights reserved. · Omaha, Nebraska</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links  = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+  </script>
+
+</body>
+</html>
