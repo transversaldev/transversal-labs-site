@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Action Figure Inventory —Track your collection, and the things you want to add to your collection, right in your pocket. Currently in Beta." />
+  <!-- POST-LAUNCH TODO: Update meta description from "Submitting to Apple for review" to "Available on the App Store" -->
+  <meta name="description" content="Action Figure Inventory — Track your collection, and the things you want to add to your collection, right in your pocket. Submitting to Apple for review." />
   <title>Transversal Labs — Action Figure Inventory App</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -52,7 +53,15 @@
 
     .hero-content { max-width: 580px; }
 
-    .beta-badge {
+    /* ── Status badge ──
+       Renamed .beta-badge → .status-badge semantically since this is no
+       longer about beta — it now reflects whatever launch state we're in.
+       Keeping the same visual treatment (accent-colored pill with pulsing
+       dot) because it's an established pattern and the visual language of
+       "something is in motion" still applies.
+       POST-LAUNCH TODO: swap badge text to "Available on the App Store"
+       and consider removing the pulsing dot (steady-state, not in motion). -->
+    .status-badge {
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
@@ -69,7 +78,7 @@
       margin-bottom: var(--space-5);
     }
 
-    .beta-badge__dot {
+    .status-badge__dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
@@ -185,8 +194,13 @@
       text-align: center;
     }
 
-    /* ── Beta CTA ── */
-    .beta-section {
+    /* ── Launch section ──
+       Renamed .beta-section → .launch-section semantically. Same visual
+       pattern (bordered band, two-column layout) but repurposed from
+       "join the beta" to "thanks + coming soon + get notified at launch."
+       POST-LAUNCH TODO: this section becomes "Download Now" with the App
+       Store button replacing the notification CTA. -->
+    .launch-section {
       margin-top: var(--space-9);
       background: var(--color-bg-secondary);
       border-top: 1px solid var(--color-border);
@@ -194,14 +208,14 @@
       padding: var(--space-9) 0;
     }
 
-    .beta-inner {
+    .launch-inner {
       display: grid;
       grid-template-columns: 1fr 440px;
       gap: var(--space-8);
       align-items: start;
     }
 
-    .beta-content__title {
+    .launch-content__title {
       font-family: var(--font-display);
       font-size: clamp(24px, 3vw, 36px);
       font-weight: 700;
@@ -213,21 +227,21 @@
       margin-top: var(--space-3);
     }
 
-    .beta-content__body {
+    .launch-content__body {
       font-size: 15px;
       color: var(--color-text-muted);
       line-height: 1.75;
     }
 
-    /* Beta form */
-    .beta-form {
+    /* Launch CTA card */
+    .launch-card {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-6);
     }
 
-    .beta-form__title {
+    .launch-card__title {
       font-family: var(--font-display);
       font-size: 18px;
       font-weight: 700;
@@ -237,49 +251,14 @@
       margin-bottom: var(--space-5);
     }
 
-    .form-group {
-      margin-bottom: var(--space-4);
-    }
-
-    .form-label {
-      display: block;
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-2);
-    }
-
-    .form-input {
-      width: 100%;
-      background: var(--color-bg-secondary);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      color: var(--color-text-primary);
-      font-family: var(--font-body);
-      font-size: 14px;
-      padding: 12px 16px;
-      transition: border-color var(--transition), box-shadow var(--transition);
-      outline: none;
-    }
-
-    .form-input:focus {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px var(--color-accent-ghost);
-    }
-
-    .form-input::placeholder { color: var(--color-text-faint); }
-
-    .form-submit {
+    .launch-submit {
       width: 100%;
       margin-top: var(--space-2);
       padding: 14px;
       font-size: 14px;
     }
 
-    .beta-note {
+    .launch-note {
       font-size: 12px;
       color: var(--color-text-muted);
       text-align: center;
@@ -292,7 +271,7 @@
       .hero-screenshot { display: none; }
       .features { grid-template-columns: 1fr 1fr; }
       .screenshots { grid-template-columns: repeat(2, 1fr); }
-      .beta-inner { grid-template-columns: 1fr; }
+      .launch-inner { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 580px) {
@@ -327,20 +306,34 @@
     </div>
   </nav>
 
-  <!-- ── Hero ── -->
+  <!-- ── Hero ──
+       POST-LAUNCH TODO:
+         - Swap status-badge text "Submitting to Apple" → "Available on the App Store"
+         - Replace hero CTA with the official Apple-provided "Download on the App Store"
+           SVG button (Apple requires using their exact asset — do not use a generic
+           button). Link href becomes the live App Store product URL.
+         - Consider removing the pulsing dot animation on the badge once live. -->
   <div class="page-hero">
     <div class="container">
       <div class="hero-layout">
         <div class="hero-content">
-          <div class="beta-badge">
-            <span class="beta-badge__dot"></span>
-            Now in Beta
+          <div class="status-badge">
+            <span class="status-badge__dot"></span>
+            Submitting to Apple
           </div>
           <span class="eyebrow">iOS Application</span>
           <h1>Action Figure<br>Inventory</h1>
           <p class="hero-tagline">Like a whole 'nother collector in your pocket.</p>
           <p class="hero-body">Action Figure Inventory is designed for optimal flexibility. Input as little or as much data on your toys as you like — all fields can be toggled on or off. Track the figures you're after in the Wishlist, document everything you have on pre-order, create CSV backups, bulk import entries, and much more.</p>
-          <a href="#beta" class="btn btn--primary" style="margin-top: var(--space-6);">Join the Beta →</a>
+          <!-- Hero CTA: mailto for launch notification signup. Interim-only;
+               becomes the App Store button post-launch. The subject line is
+               pre-filled so inbound mail is easy to filter in the Support
+               inbox. -->
+          <a href="mailto:Support@transversallabs.com?subject=Notify%20me%20at%20launch%20%E2%80%94%20Action%20Figure%20Inventory"
+             class="btn btn--primary"
+             style="margin-top: var(--space-6);">
+            Get Launch Notification →
+          </a>
         </div>
         <div class="hero-screenshot">
           <img src="images/FullLogo-7.png" alt="Action Figure Inventory App — figure detail screen" />
@@ -383,7 +376,7 @@
             </svg>
           </div>
           <p class="feature__title">On Order</p>
-          <p class="feature__body">Document pre-orders from Hasbro Pulse, Big Bad Toy Store, or any retailer. See what's coming and what you've got tied up. Sumarizes your upcoming spend by month.</p>
+          <p class="feature__body">Document pre-orders from Hasbro Pulse, Big Bad Toy Store, or any retailer. See what's coming and what you've got tied up. Summarizes your upcoming spend by month.</p>
         </div>
         <div class="feature">
           <div class="feature__icon">
@@ -456,7 +449,10 @@
 
       <div class="features" style="margin-top: var(--space-7);">
 
-        <!-- CSV Template -->
+        <!-- CSV Template ──
+             CONSOLIDATED UPC warning: now covers both entering new UPCs AND
+             opening exported CSVs (the latter is also an Excel scientific-
+             notation trap and was missing from the previous version). -->
         <div class="feature">
           <div class="feature__icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -467,7 +463,7 @@
             </svg>
           </div>
           <p class="feature__title">Blank CSV Template</p>
-          <p class="feature__body">Starting fresh or entering a big collection? Download the blank import template, fill it in a spreadsheet, and import it into AFI in one shot — no manual entry required.</p>
+          <p class="feature__body">Starting fresh or entering a big collection? Download the blank import template, fill it in a spreadsheet, and import it into AFI in one shot — no manual entry required. The template includes an <strong style="color: var(--color-text-secondary);">AmountPaid</strong> column — use it to log what you actually paid for each figure, separate from the estimated value.</p>
           <div style="margin-top: var(--space-4);">
             <a href="downloads/AFI_Collection_Import_Template.csv"
                download="AFI_Collection_Import_Template.csv"
@@ -477,11 +473,13 @@
             </a>
           </div>
           <p class="feature__body" style="margin-top: var(--space-3); font-size: 13px;">
-            ⚠️ <strong style="color: var(--color-text-secondary);">Important:</strong> Before entering UPC barcodes, format that column as <strong style="color: var(--color-text-secondary);">Text</strong> in your spreadsheet app. Otherwise long numbers get converted to scientific notation and won't work correctly in AFI.
+            ⚠️ <strong style="color: var(--color-text-secondary);">Important — UPC columns and Excel:</strong> Whether you're <em>entering</em> new UPC barcodes into the template or <em>opening a CSV export</em> from AFI, format the UPC column as <strong style="color: var(--color-text-secondary);">Text</strong> in your spreadsheet app before you start editing. Otherwise long numbers get converted to scientific notation (e.g. <code>8.12345E+11</code>) and won't work correctly when you import back into AFI.
           </p>
         </div>
 
-        <!-- How to Import -->
+        <!-- How to Import ──
+             Added mention of AmountPaid in step 3 so users know the column
+             exists and what it's for. Kept the step list structure. -->
         <div class="feature">
           <div class="feature__icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -495,13 +493,23 @@
           <ol style="margin-top: var(--space-3); padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2);">
             <li style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">Download the blank template above and open it in Excel, Numbers, or Google Sheets.</li>
             <li style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">Format the UPC column as <strong style="color: var(--color-text-secondary);">Text</strong> before entering any data.</li>
-            <li style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">Fill in your figures. Copy a row down to reuse shared fields like manufacturer and toy line — change the name and figure number per row.</li>
+            <li style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">Fill in your figures. Use the <strong style="color: var(--color-text-secondary);">AmountPaid</strong> column for what you paid and <strong style="color: var(--color-text-secondary);">Price</strong> for the current market value. Copy a row down to reuse shared fields like manufacturer and toy line — change the name and figure number per row.</li>
             <li style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">Save as CSV and move the file to your iPhone (AirDrop, iCloud Drive, or email it to yourself).</li>
             <li style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">In AFI, open <strong style="color: var(--color-text-secondary);">Settings → Export &amp; Import → Import from CSV</strong> and select your file.</li>
           </ol>
+          <!-- "Export includes unassigned items" note ──
+               Placed here (under How to Import) so it's near the Export &
+               Import context. Flagged visually with a small heading-style
+               line to make it scannable. -->
+          <p class="feature__body" style="margin-top: var(--space-4); font-size: 13px;">
+            ℹ️ <strong style="color: var(--color-text-secondary);">About exports:</strong> When you export your collection, the file includes <em>every</em> figure in AFI — including figures that aren't assigned to a specific collection. Nothing gets left behind.
+          </p>
         </div>
 
-        <!-- Support -->
+        <!-- Support ──
+             Updated: both mail links now point to Support@transversallabs.com
+             (capital S) for consistency with the privacy policy and to route
+             all public inquiries to the Support inbox rather than personal. -->
         <div class="feature">
           <div class="feature__icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -511,53 +519,66 @@
           <p class="feature__title">Support</p>
           <p class="feature__body">Questions, bug reports, or feature ideas — we want to hear them. AFI is actively developed and collector feedback directly shapes what gets built next.</p>
           <div style="margin-top: var(--space-4);">
-            <a href="mailto:support@transversallabs.com" class="btn btn--ghost" style="font-size: 12px; padding: 10px 18px;">
+            <a href="mailto:Support@transversallabs.com" class="btn btn--ghost" style="font-size: 12px; padding: 10px 18px;">
               Email Support →
             </a>
           </div>
           <p class="feature__body" style="margin-top: var(--space-3); font-size: 13px; color: var(--color-text-muted);">
-            You can also reach us at <a href="mailto:support@transversallabs.com" style="color: var(--color-accent);">support@transversallabs.com</a>
+            You can also reach us at <a href="mailto:Support@transversallabs.com" style="color: var(--color-accent);">Support@transversallabs.com</a>
           </p>
         </div>
 
       </div>
     </div>
   </section>
-  
-  <!-- ── Beta CTA ── -->
-  <div class="beta-section" id="beta">
+
+  <!-- ── Launch section (was: Beta CTA) ──
+       Rewritten per JDB's decision 3A: thanks to beta testers + coming soon
+       messaging + launch notification signup. Keeps the visual block from
+       the old beta section so the page's rhythm is preserved.
+
+       POST-LAUNCH TODO: this entire section becomes a "Download Now" block:
+         - Title: "Now Available on the App Store"
+         - Body: brief launch announcement
+         - Right card: official Apple "Download on the App Store" button
+                       (use Apple's exact asset — not a generic button)
+         - Remove the mailto; replace with the App Store product URL
+         - Change section ID from "launch" to something post-launch-appropriate
+           if any other page anchors to #launch (none currently do) -->
+  <div class="launch-section" id="launch">
     <div class="container">
-      <div class="beta-inner">
-        <div class="beta-content">
-          <div class="beta-badge" style="margin-bottom: var(--space-4);">
-            <span class="beta-badge__dot"></span>
-            Beta Program
+      <div class="launch-inner">
+        <div class="launch-content">
+          <div class="status-badge" style="margin-bottom: var(--space-4);">
+            <span class="status-badge__dot"></span>
+            Submitting to Apple
           </div>
-          <h2 class="beta-content__title">Want to Be<br>a Beta Tester?</h2>
-          <p class="beta-content__body">Action Figure Inventory is currently in Beta and we're looking for collectors to put it through its paces. If you'd like to try it out and help shape it's launch and future, we'd love to have you. Drop your name and email and we'll be in touch with access details.</p>
-          <p class="beta-content__body" style="margin-top: var(--space-4);">We won't keep your details or information. All you need is an Apple Account to participate (Also known previously as your Apple ID). Free to use, no commitment. We're looking for new ideas and what features we can add that will make this your go to collectibles app.</p>
+          <h2 class="launch-content__title">Thanks to Our<br>Beta Testers.</h2>
+          <p class="launch-content__body">Over the past few months, our beta testers put Action Figure Inventory through its paces — cataloging their collections, finding the rough edges, and shaping what shipped. The app is better because of them.</p>
+          <p class="launch-content__body" style="margin-top: var(--space-4);">AFI is now headed to the App Store for Apple's review. We'll be live soon — want to know the moment it goes live? Drop us a note and we'll send a single email when it's available for download. No list, no marketing, just a heads up.</p>
         </div>
 
-        <div class="beta-form">
-          <p class="beta-form__title">Join the Beta</p>
+        <div class="launch-card">
+          <p class="launch-card__title">Launching Soon</p>
           <p style="font-family: var(--font-body); font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: var(--space-5);">
-            Ready to try it out? Drop us an email and we'll get you set up with TestFlight access.
+            Want to be notified the day Action Figure Inventory goes live on the App Store? Shoot us a quick email and we'll let you know.
           </p>
-          
-            <a href="mailto:jody@transversallabs.com?subject=Beta Access Request — Action Figure Inventory"
-            class="btn btn--primary form-submit"
-            style="display: block; text-align: center; text-decoration: none;"
-          >
-            Request Beta Access →
+
+          <a href="mailto:Support@transversallabs.com?subject=Notify%20me%20at%20launch%20%E2%80%94%20Action%20Figure%20Inventory"
+             class="btn btn--primary launch-submit"
+             style="display: block; text-align: center; text-decoration: none;">
+            Notify Me at Launch →
           </a>
-          <p class="beta-note">We'll follow up with TestFlight access details.</p>
+          <p class="launch-note">One email on launch day. That's it.</p>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ── Footer ── -->
+  <!-- ── Footer ──
+       Fixed: line previously had Class="footer__link" (capital C) which is
+       invalid HTML. Browsers forgive it but it should be lowercase. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
@@ -571,7 +592,7 @@
           <li><a href="about.html" class="footer__link">About</a></li>
           <li><a href="media.html" class="footer__link">Media</a></li>
           <li><a href="contact.html" class="footer__link">Contact</a></li>
-          <li><a href="privacy.html" Class="footer__link">Privacy</a></li>
+          <li><a href="privacy.html" class="footer__link">Privacy</a></li>
         </ul>
         <p class="footer__copy">© 2026 Transversal Labs LLC. All rights reserved. · Omaha, Nebraska</p>
       </div>
