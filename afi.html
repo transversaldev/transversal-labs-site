@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- POST-LAUNCH TODO: Update meta description from "Submitting to Apple for review" to "Available on the App Store" -->
-  <meta name="description" content="Action Figure Inventory — Track your collection, and the things you want to add to your collection, right in your pocket. Submitting to Apple for review." />
+  <!-- Meta description: shown by Google and in link previews (iMessage, Slack, etc.).
+       Updated at launch (Nov 2026) — TODO comment removed since it's done.
+       Kept under ~160 characters so search results don't truncate it. -->
+  <meta name="description" content="Action Figure Inventory — track your collection, wishlist, and pre-orders right in your pocket. Now available on the App Store for iPhone." />
   <title>Transversal Labs — Action Figure Inventory App</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -266,6 +268,32 @@
       font-style: italic;
     }
 
+      /* ── Launch QR code ──
+         Centered under the App Store button, separated by a thin divider so it
+         reads as a secondary option, not a competing CTA.
+         Hidden at phone width (580px, matching this page's existing phone
+         breakpoint): on a phone the button above is one tap away, and a QR
+         code can't be scanned from the same screen it's displayed on. */
+      .launch-qr {
+        text-align: center;
+        margin-top: var(--space-5);
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-border);
+      }
+
+      .launch-qr img {
+        display: block;          /* removes the small gap browsers add under inline images */
+        margin: 0 auto;          /* centers the block-level image */
+        background: #fff;        /* QR scanners need contrast; guarantees a light
+                                    backing if the artwork has a transparent background */
+        padding: 8px;            /* quiet zone: scanners need a clear margin around the code */
+        border-radius: var(--radius-md);
+      }
+
+      @media (max-width: 580px) {
+        .launch-qr { display: none; }
+      }
+      
     @media (max-width: 900px) {
       .hero-layout { grid-template-columns: 1fr; }
       .hero-screenshot { display: none; }
@@ -307,32 +335,38 @@
   </nav>
 
   <!-- ── Hero ──
-       POST-LAUNCH TODO:
-         - Swap status-badge text "Submitting to Apple" → "Available on the App Store"
-         - Replace hero CTA with the official Apple-provided "Download on the App Store"
-           SVG button (Apple requires using their exact asset — do not use a generic
-           button). Link href becomes the live App Store product URL.
-         - Consider removing the pulsing dot animation on the badge once live. -->
+       Updated at launch (Nov 2026):
+         - Status badge now reads "Now on the App Store".
+         - Pulsing dot removed: the pulse signaled "something in motion"
+           (beta, review). The app is now live and steady-state, so a static
+           pill reads as more settled and confident.
+         - CTA is Apple's official badge artwork (see note at the button). -->
   <div class="page-hero">
     <div class="container">
       <div class="hero-layout">
         <div class="hero-content">
           <div class="status-badge">
-            <span class="status-badge__dot"></span>
-            Waiting on Review with Apple
+            Now on the App Store
           </div>
           <span class="eyebrow">iOS Application</span>
           <h1>Action Figure<br>Inventory</h1>
           <p class="hero-tagline">Like a whole 'nother collector in your pocket.</p>
           <p class="hero-body">Action Figure Inventory is designed for optimal flexibility. Input as little or as much data on your toys as you like — all fields can be toggled on or off. Track the figures you're after in the Wishlist, document everything you have on pre-order, create CSV backups, bulk import entries, and much more.</p>
-          <!-- Hero CTA: mailto for launch notification signup. Interim-only;
-               becomes the App Store button post-launch. The subject line is
-               pre-filled so inbound mail is easy to filter in the Support
-               inbox. -->
-          <a href="mailto:Support@transversallabs.com?subject=Notify%20me%20at%20launch%20%E2%80%94%20Action%20Figure%20Inventory"
-             class="btn btn--primary"
-             style="margin-top: var(--space-6);">
-            Get Launch Notification →
+          <!-- Hero CTA: Apple's official "Download on the App Store" badge.
+               - Artwork must be Apple's unmodified SVG (no recoloring, cropping,
+                 or animating) per Apple's marketing guidelines.
+               - Short URL format (apps.apple.com/app/id<number>) works in every
+                 country and survives any future listing rename.
+               - target="_blank" opens the store in a new tab so the visitor keeps
+                 our page; rel="noopener" is the standard security pairing for it.
+               - display:inline-block lets the link respect margin-top (plain
+                 inline links ignore vertical margins). -->
+          <a href="https://apps.apple.com/app/id6791011234"
+             target="_blank" rel="noopener"
+             style="display: inline-block; margin-top: var(--space-6);">
+            <img src="images/download-on-the-app-store.svg"
+                 alt="Download Action Figure Inventory on the App Store"
+                 height="48" />
           </a>
         </div>
         <div class="hero-screenshot">
@@ -357,7 +391,7 @@
             </svg>
           </div>
           <p class="feature__title">Flexible Entry</p>
-          <p class="feature__body">Fill in as much information as you want. Most fields are optional — so you can log a quick add or go deep with full details. Connect to eBay to see what the current selling prices for your figures are, right from the entry form.</p>
+          <p class="feature__body">Fill in as much information as you want. Most fields are optional — so you can log a quick add or go deep with full details. Connect to eBay to see what the current asking prices for any figures are, right from the detail view.</p>
         </div>
         <div class="feature">
           <div class="feature__icon">
@@ -532,44 +566,63 @@
     </div>
   </section>
 
-  <!-- ── Launch section (was: Beta CTA) ──
-       Rewritten per JDB's decision 3A: thanks to beta testers + coming soon
-       messaging + launch notification signup. Keeps the visual block from
-       the old beta section so the page's rhythm is preserved.
+  <!-- ── Launch section ──
+       Updated at launch (Nov 2026). Same visual block as the beta/review
+       versions so the page rhythm is preserved; content moves from
+       "coming soon + notify me" to "available now + thanks."
 
-       POST-LAUNCH TODO: this entire section becomes a "Download Now" block:
-         - Title: "Now Available on the App Store"
-         - Body: brief launch announcement
-         - Right card: official Apple "Download on the App Store" button
-                       (use Apple's exact asset — not a generic button)
-         - Remove the mailto; replace with the App Store product URL
-         - Change section ID from "launch" to something post-launch-appropriate
-           if any other page anchors to #launch (none currently do) -->
+       Decisions:
+         - Beta tester thanks kept: they shaped the app and it's good
+           community signal for new visitors.
+         - Status badge is static (no pulsing dot), matching the hero.
+         - Right-card CTA is a styled TEXT button, not a second Apple badge.
+           Apple's guidelines call for one App Store badge per layout; the
+           hero already has it. A text link to the App Store is fine; what
+           we must NOT do is build a look-alike badge.
+         - Beta-tester note tells TestFlight users how to switch safely
+           (CSV backup first), so the one support question we expect most
+           is answered up front.
+         - Section ID "launch" kept: nothing else links to it, and it
+           still describes the section. -->
   <div class="launch-section" id="launch">
     <div class="container">
       <div class="launch-inner">
         <div class="launch-content">
           <div class="status-badge" style="margin-bottom: var(--space-4);">
-            <span class="status-badge__dot"></span>
-            Wating on Review with Apple
+            Launched November 2026
           </div>
-          <h2 class="launch-content__title">Thanks to Our<br>Beta Testers.</h2>
+          <h2 class="launch-content__title">Now Available<br>on the App Store.</h2>
           <p class="launch-content__body">Over the past few months, our beta testers put Action Figure Inventory through its paces — cataloging their collections, finding the rough edges, and shaping what shipped. The app is better because of them.</p>
-          <p class="launch-content__body" style="margin-top: var(--space-4);">Status -  9th October 2027: AFI has been submitted to the App Store for Apple's review. We'll be live as soon as approval is provided by Apple.</p>
+          <p class="launch-content__body" style="margin-top: var(--space-4);">AFI 1.0 is free and built by a collector, for collectors. Questions, ideas, or something you'd love to see next? We want to hear it — collector feedback drives what gets built.</p>
         </div>
 
         <div class="launch-card">
-          <p class="launch-card__title">Launching Soon</p>
+          <p class="launch-card__title">Get AFI</p>
           <p style="font-family: var(--font-body); font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: var(--space-5);">
-            Want to be notified the day Action Figure Inventory goes live on the App Store? Shoot us a quick email and we'll let you know.
+            Free on the App Store for iPhone. <strong>Beta testers:</strong> export a CSV backup from the TestFlight version first, then install from the App Store.
           </p>
 
-          <a href="mailto:Support@transversallabs.com?subject=Notify%20me%20at%20launch%20%E2%80%94%20Action%20Figure%20Inventory"
+          <!-- Same App Store URL as the hero badge. Uses existing .btn and
+               .launch-submit styles, so no new CSS is needed. -->
+          <a href="https://apps.apple.com/app/id6791011234"
+             target="_blank" rel="noopener"
              class="btn btn--primary launch-submit"
              style="display: block; text-align: center; text-decoration: none;">
-            Notify Me at Launch →
+            View on the App Store →
           </a>
-          <p class="launch-note">One email on launch day. That's it.</p>
+          <p class="launch-note">Free · Built for iPhone</p>
+          <!-- QR code (desktop/tablet only) ──
+               For visitors on a laptop who can't install from there: scan with
+               a phone and land on the App Store listing. Hidden on phone-width
+               screens via the .launch-qr media query (you can't scan your own
+               screen). QR artwork generated by Apple's App Store Marketing
+               Tools, so it points to the official listing URL. -->
+          <div class="launch-qr">
+            <img src="images/afi-app-store-qr.png"
+                 alt="QR code linking to Action Figure Inventory on the App Store"
+                 width="120" height="120" />
+            <p class="launch-note" style="margin-top: var(--space-2);">On a computer? Scan with your iPhone.</p>
+          </div>
         </div>
 
       </div>
